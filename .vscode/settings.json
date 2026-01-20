@@ -1,0 +1,10 @@
+{
+  "editor.quickSuggestions": false,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.parameterHints.enabled": false,
+  "editor.inlineSuggest.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.snippetSuggestions": "none",
+  "editor.wordBasedSuggestions": "off",
+  "editor.tabCompletion": "off"
+}
