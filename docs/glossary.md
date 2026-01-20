@@ -1,0 +1,13 @@
+## Glossary
+- Risk question - pergunta de risco
+- Data source - fonte de dados
+- Suspicious rule - regra de suspeita
+- Threshold - limite numérico
+- Time window - janela de tempo
+- Wallet age - idade da carteira
+- Transaction (tx) - transação
+- Flagged transaction - transação sinalizada
+- Log line - linha de log
+- Evidence - evidência (prova)
+- SQLite - banco local leve
+- ETL - extração/transformação/carga
