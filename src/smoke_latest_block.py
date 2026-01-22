@@ -1,7 +1,9 @@
 import os
 import requests
+from dotenv import load_dotenv
   
 if __name__ == "__main__":
+    load_dotenv()
     rpc_url = os.getenv('RPC_URL')
     if not rpc_url:
         print("RPC_URL not set")
@@ -21,6 +23,9 @@ if __name__ == "__main__":
         raise SystemExit(1)
     
     data = resp.json()
+
+    print(f"DEBUG: O servidor respondeu: {data}")
+
     
     try:        
         hex_block = data['result']    
