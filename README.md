@@ -6,3 +6,6 @@ Milestone (public repo readiness): https://github.com/bigmath-hub/riskchain/mile
 
 ## Project Narrative
 - Business Explainer (plain language): docs/pitch/business-explainer.md
+
+## Roadmap: 
+- `docs/roadmap.md`
