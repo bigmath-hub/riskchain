@@ -4,7 +4,7 @@
 Placeholder. The Whale Watcher script will be added in Phase 1.
 
 ## Evidence
-Placeholder. Logs and SQLite rows will be stored in docs/evidence/.
+See: docs/evidence/ticket-008_block-fetch.md (Block Fetch v0).
 
 ## Local Setup
 ```bash
