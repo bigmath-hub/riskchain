@@ -19,3 +19,5 @@ block_fetch_ok=1
 
 **Git commit:** 28e926e
 
+**RPC provider:** eth.llamarpc.com
+
