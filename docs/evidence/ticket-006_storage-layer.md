@@ -25,3 +25,5 @@ connected=data/riskchain.db
 cols=6
 rows=1
 ```
+## Git commit:
+- faf0e3e
