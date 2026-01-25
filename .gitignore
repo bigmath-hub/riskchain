@@ -211,3 +211,7 @@ __marimo__/
 __pycache__/
 
 data/
+
+# Local SQLite DB
+riskchain.db
+*.db
