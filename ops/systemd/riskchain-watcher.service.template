@@ -1,0 +1,14 @@
+# TEMPLATE ONLY - copy to ~/.config/systemd/user/*.service
+[Unit]
+Description=Systemd Service v0 (run 24/7 on Linux)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/<USER>/path/to/riskchain
+ExecStart=/home/<USER>/path/to/riskchain/.venv/bin/python -u src/watcher_loop_v0.py
+EnvironmentFile=/home/<USER>/path/to/riskchain/.env
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

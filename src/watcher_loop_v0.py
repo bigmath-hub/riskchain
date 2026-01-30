@@ -92,10 +92,19 @@ def run_once(conn, rpc_url, max_blocks_per_run):
 
     return final_return
 
+def infinite_counter():
+    n = 1
+    # increment cycle_n if while true
+    while True:        
+        yield n
+        n += 1
+
+def read_env_int(key, default=0):
+    return int(os.getenv(key, str(default)))
+
 if __name__ == "__main__":
     load_dotenv()
-    SLEEP_SECONDS = int(os.getenv("SLEEP_SECONDS", "3"))
-    MAX_CYCLES = 3    
+    SLEEP_SECONDS = int(os.getenv("SLEEP_SECONDS", "3"))    
     MAX_BLOCKS_PER_RUN = int(os.getenv("MAX_BLOCKS_PER_RUN", "3"))    
     rpc_url = os.getenv("RPC_URL")
     db_path = os.getenv("DB_PATH", "riskchain.db")
@@ -112,7 +121,13 @@ if __name__ == "__main__":
     conn.execute(meta)
     conn.commit()    
 
-    for cycle_n in range(1, MAX_CYCLES + 1):
+    max_cycles = read_env_int("MAX_CYCLES", 0)
+    if max_cycles > 0:
+        loop = range(1, max_cycles + 1)
+    else:
+        loop = infinite_counter()  # ex: while True incrementa cycle_n    
+    
+    for cycle_n in loop:
         try:
             audit = run_once(conn, rpc_url, MAX_BLOCKS_PER_RUN)
             print(f"""
@@ -130,7 +145,6 @@ cycle_n={cycle_n}
 rpc_error=1 
 err_type={type(e).__name__} 
 err_msg={e} will_retry=1                
-            """)
-        if cycle_n < MAX_CYCLES:
-            print(f"sleep_seconds={SLEEP_SECONDS}")
-            sleep(SLEEP_SECONDS)
+            """)        
+        print(f"sleep_seconds={SLEEP_SECONDS}")
+        sleep(SLEEP_SECONDS)
