@@ -3,6 +3,7 @@ import sqlite3
 import requests
 from dotenv import load_dotenv
 from time import sleep
+from datetime import datetime, timezone
 
 # TODO: Watch loop v0
 # - repeat N rounds
@@ -102,8 +103,25 @@ def infinite_counter():
 def read_env_int(key, default=0):
     return int(os.getenv(key, str(default)))
 
+def meta_set(conn, last_run_utc, ts_utc):
+    cursor = conn.cursor()    
+    upsert_query = '''
+    INSERT INTO meta (key, value) VALUES (?, ?)
+    ON CONFLICT(key)
+    DO UPDATE SET                
+        value = excluded.value;
+    '''        
+    try:
+        cursor.execute(
+            upsert_query, (last_run_utc, ts_utc)
+        )
+        conn.commit()
+
+    except sqlite3.Error as e:
+        raise ValueError (f"An error ocurred: {e}")          
+
 if __name__ == "__main__":
-    load_dotenv()
+    load_dotenv()    
     SLEEP_SECONDS = int(os.getenv("SLEEP_SECONDS", "3"))    
     MAX_BLOCKS_PER_RUN = int(os.getenv("MAX_BLOCKS_PER_RUN", "3"))    
     rpc_url = os.getenv("RPC_URL")
@@ -128,8 +146,11 @@ if __name__ == "__main__":
         loop = infinite_counter()  # ex: while True incrementa cycle_n    
     
     for cycle_n in loop:
+        now_utc = datetime.now(timezone.utc).replace(microsecond=0)
+        ts_utc = now_utc.isoformat().replace("+00:00", "Z")
         try:
             audit = run_once(conn, rpc_url, MAX_BLOCKS_PER_RUN)
+            meta_set(conn, "last_run_utc", ts_utc)
             print(f"""
 cycle_n={cycle_n}
 latest_block={audit['latest_block']}
@@ -139,6 +160,7 @@ end_block={audit['end_block']}
 cursor_after={audit['cursor_after']}
 processed_block_count={audit['processed_blocks_count']}
 """)
+            
         except Exception as e:
             print(f"""                
 cycle_n={cycle_n} 
