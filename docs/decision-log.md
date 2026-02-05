@@ -18,3 +18,5 @@
 ### Closed TICKET#008 — Block Fetch v0 
 **Evidence:** docs/evidence/ticket-008_block-fetch.md — Code: 28e926e
 
+## 2026-02-05 - Study Case Choice
+**Beanstalk case:** clear on-chain trail, governance pattern, good public references
