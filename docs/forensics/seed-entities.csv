@@ -1,0 +1,8 @@
+label,type,chain,identifier,role,source,notes
+Beanstalk Exploit,tx,ethereum,0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7,first exploit tx,http://etherscan.io/tx/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7,Flash loan used to gain voting power;executed BIP-18.
+Beanstalk Exploit,address,ethereum,0x1c5dCdd006EA78a7E4783f9e6021C32935a10fb4,attacker eoa,https://etherscan.io/address/0x1c5dcdd006ea78a7e4783f9e6021c32935a10fb4,human controller
+Beanstalk Exploit,address,ethereum,0x728ad672409da288ca5b9aa85d1a55b803ba97d7,created_contract,https://etherscan.io/address/0x728ad672409da288ca5b9aa85d1a55b803ba97d7,created in exploit tx
+Beanstalk Exploit,address,ethereum,0x79224bc0bf70ec34f0ef56ed8251619499a59def,attack contract,https://etherscan.io/address/0x79224bc0bf70ec34f0ef56ed8251619499a59def,the bot that executed the bip-18 and held funds
+Beanstalk Exploit,address,ethereum,0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2,payout/loot,https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2,~24k WETH profit
+Beanstalk Exploit,address,ethereum,0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48,usdc_token_contract,https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48,USDC token used in exploit flows
+Beanstalk Exploit,address,ethereum,0x165cd37b4c644c2921454429e7f9358d18a45e14,donation_recipient,https://etherscan.io/address/0x165cd37b4c644c2921454429e7f9358d18a45e14,received 250k USDC
